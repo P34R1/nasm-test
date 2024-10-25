@@ -28,10 +28,9 @@
           packages = with pkgs; [
             nasm
             nasmfmt
+            asm-lsp
 
             just
-
-            # asm-lsp
           ];
 
           # Set any environment variables for your dev shell
