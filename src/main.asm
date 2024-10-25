@@ -15,14 +15,14 @@ section .text
 
   ; Write the string to stdout:
 
-  mov edx,len ;message length
-  mov ecx,msg ;message to write
-  mov ebx,1   ;file descriptor (stdout)
-  mov eax,4   ;system call number (sys_write)
-  int 0x80    ;call kernel
+  mov rdx,len ;message length
+  mov rsi,msg ;message to write
+  mov rdi,1   ;file descriptor (stdout)
+  mov rax,1   ;system call number (sys_write)
+  syscall     ;call kernel
 
   ; Exit via the kernel:
 
-  mov ebx,0   ;process' exit code
-  mov eax,1   ;system call number (sys_exit)
-  int 0x80    ;call kernel - this interrupt won't return
+  mov rdi,0   ;process' exit code
+  mov rax,60  ;system call number (sys_exit)
+  syscall     ;call kernel - this interrupt won't return
