@@ -29,7 +29,7 @@
             nasm
             nasmfmt
 
-            gnumake
+            just
 
             # asm-lsp
           ];
