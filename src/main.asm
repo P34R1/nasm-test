@@ -2,7 +2,6 @@ section .data
   ;Constants
   msg: db  "Hello, World!", 0xa ; newline at end
   len: equ $ - msg              ; get length
-  filename: db "output.txt", 0 ; Filename string, null-terminated
 
 
 section .bss
@@ -13,11 +12,16 @@ section .bss
 section .text
   global _start
 
+  ;https://man7.org/linux/man-pages/
+  ;https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/
   _start:
+
+  ;https://stackoverflow.com/questions/35864291/get-argv2-address-in-assembler-x64
+  ; Load the address of argv[1] (the filename) into rdi
+  mov rdi, [rsp+16]  ; argv[1] is at offset +8 from rsp+8 (argv[0] is the program name)
 
   mov rdx, 0o644        ; mode: rw-r--r-- (octal 644)
   mov rsi, 0x241        ; flags: O_CREAT | O_WRONLY | O_TRUNC (0x241)
-  mov rdi, filename
   mov rax, 2            ; sys_open system call number is 2
   syscall
   mov [fileptr], rax  ; store the file descriptor in [fileptr]
