@@ -1,0 +1,6 @@
+.direnv/
+
+*.exe
+*.o
+*.obj
+*.bc
