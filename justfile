@@ -8,3 +8,6 @@ run: build
 
 watch:
 	@ls src/**/*.asm | entr -s "just run"
+
+clean:
+  @rm -r obj main
