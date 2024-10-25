@@ -4,10 +4,10 @@ build:
 	@./build.fish
 
 run: build
-	@./main
+	@./obj/main
 
 watch:
 	@ls src/**/*.asm | entr -s "just run"
 
 clean:
-  @rm -r obj main
+  @rm -r obj

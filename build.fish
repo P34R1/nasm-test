@@ -13,4 +13,4 @@ end
 
 # Link
 set obj_src (ls obj/**/*.o)
-ld -m elf_x86_64 -o main $obj_src
+ld -m elf_x86_64 -o obj/main $obj_src
