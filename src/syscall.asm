@@ -1,8 +1,6 @@
 section .text
-global print
-global closefile
-global openfile
 
+global print
 print:
   ; print (sys_write)
   mov rax,1   ;system call number (sys_write)
@@ -10,6 +8,7 @@ print:
   ret
 
 
+global closefile
 closefile:
   ; Close file (sys_close)
   mov rax, 3                    ; sys_close system call number is 3
@@ -17,6 +16,7 @@ closefile:
   ret
 
 
+global openfile
 openfile:
   ; Open file (sys_open)
   mov rdx, 0o644  ; mode: rw-r--r-- (octal 644)
